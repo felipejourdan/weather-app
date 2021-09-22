@@ -1,13 +1,18 @@
-import React from "react";
+import React from 'react';
 import Api from './Api';
+import useLocalStorage from './useLocalStorage';
 
-export const LocationContext = React.createContext()
+export const LocationContext = React.createContext();
 
-export const LocationStorage = ({children}) => {
+export const LocationStorage = ({ children }) => {
   const [query, setQuery] = React.useState('');
   const [weather, setWeather] = React.useState({});
   const [city, setCity] = React.useState('');
   const [country, setCountry] = React.useState('');
+  const [storageWeather, setStorageWeather] = useLocalStorage(
+    'storageWeather',
+    '',
+  );
 
   React.useEffect(() => {
     function fetchAPi(a, b) {
@@ -23,7 +28,6 @@ export const LocationStorage = ({children}) => {
           )
             .then((res) => res.json())
             .then((result) => {
-              console.log(result);
               const locality = result.data[0].locality;
               const country = result.data[0].country;
               setCity(locality);
@@ -31,10 +35,11 @@ export const LocationStorage = ({children}) => {
             });
 
           setWeather(result);
+          setStorageWeather(result);
           setQuery('');
-          console.log(result, lat, lng);
         });
     }
+
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
         const latitude = position.coords.latitude;
@@ -44,13 +49,24 @@ export const LocationStorage = ({children}) => {
     } else {
       fetchAPi('38.7259284', '-9.137382');
     }
-  }, [])
+  });
 
-
-
-  return <LocationContext.Provider value={{query, setQuery, weather, setWeather, city, setCity, country, setCountry}}>{children}</LocationContext.Provider>
-
-}
-
-
-
+  return (
+    <LocationContext.Provider
+      value={{
+        query,
+        setQuery,
+        weather,
+        setWeather,
+        city,
+        setCity,
+        country,
+        setCountry,
+        storageWeather,
+        setStorageWeather,
+      }}
+    >
+      {children}
+    </LocationContext.Provider>
+  );
+};

@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
-import { LocationStorage } from './LocationContext';
-import { SearchStorage } from './SearchContext';
-import Location from './Location';
-import Search from './Search';
+import React from 'react';
+import LocationTeste from './LocationTeste';
+import SearchTeste from './SearchTeste';
+import AppMount from './AppMount';
+import { UseFetch } from './FetchContext';
 
 function App() {
   return (
-    <div>
-      <SearchStorage>
-      <Search />
-      </SearchStorage>
-
-      <LocationStorage>
-      <Location />
-      </LocationStorage>
+    <div className="app">
+      <UseFetch>
+        <SearchTeste />
+        <LocationTeste />
+        <AppMount />
+      </UseFetch>
     </div>
   );
 }

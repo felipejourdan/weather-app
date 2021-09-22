@@ -5,11 +5,10 @@
   font-family: Lexend Deca;
   font-style: normal;
   font-weight: normal;
+  background-color: aqua;
 }
 
 .app {
-  background-color: aqua;
-  transition: 0.4 ease;
 }
 
 .app.warm {
@@ -17,7 +16,9 @@
 }
 
 .search-box {
-  width: 100%;
+  width: 40%;
+  width: 20rem;
+  height: 2rem;
   margin: 0 0 3rem;
 }
 
@@ -44,6 +45,10 @@
   padding-top: 8rem;
   background: green;
   width: 35rem;
+}
+
+.text-align {
+  text-align: center;
 }
 
 .weatherLocation-box {
@@ -94,9 +99,21 @@
 .weather-box {
   color: #fff;
   text-align: center;
+  border: 1px solid #313131;
 }
 
-.weather-box .temp {
+.weather-box .weather {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+}
+
+.align-center {
+  align-items: center;
+}
+
+.temp-box {
   position: relative;
   display: inline-block;
   margin: 2rem auto;
@@ -109,11 +126,5 @@
   text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
   text-align: center;
   box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
-}
-
-.weather-box .weather {
-  color: #fff;
-  font-size: 3rem;
-  font-weight: 700;
-  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  font-size: 4rem;
 }

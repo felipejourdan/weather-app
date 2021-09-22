@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 import Api from './Api';
 
-export const SearchContext = React.createContext()
+export const SearchContext = React.createContext();
 
-export const SearchStorage = ({children}) => {
+export const SearchStorage = ({ children }) => {
   const [query, setQuery] = React.useState('');
-  const [weather, setWeather] = React.useState({});
+  const [weather, setWeather] = React.useState('');
   const [city, setCity] = React.useState('');
   const [country, setCountry] = React.useState('');
 
@@ -22,7 +22,6 @@ export const SearchStorage = ({children}) => {
           const country = result.data[0].country;
           setCity(locality);
           setCountry(country);
-          console.log(result, lat, lng);
           fetch(
             `${Api.base}onecall?lat=${lat}&lon=${lng}&exclude=minutely,hourly&units=metric&APPID=${Api.key}`,
           )
@@ -30,12 +29,26 @@ export const SearchStorage = ({children}) => {
             .then((result) => {
               setWeather(result);
               setQuery('');
-              console.log(result);
             });
         });
     }
   }
 
-  return <SearchContext.Provider value={{query, setQuery, weather, setWeather, city, setCity, country, setCountry, weatherSearch}}>{children}</SearchContext.Provider>
-
-}
+  return (
+    <SearchContext.Provider
+      value={{
+        query,
+        setQuery,
+        weather,
+        setWeather,
+        city,
+        setCity,
+        country,
+        setCountry,
+        weatherSearch,
+      }}
+    >
+      {children}
+    </SearchContext.Provider>
+  );
+};

@@ -1,6 +1,6 @@
 const Api = {
-  key: '8cc52cce77b83de5cc18604711baf5fd',
-  base: 'https://api.openweathermap.org/data/2.5/',
+  key: 'ba2d684faa104a83881154515211806',
+  base: 'http://api.weatherapi.com/v1/',
 };
 
 export default Api;

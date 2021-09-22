@@ -2,7 +2,7 @@ import React from 'react';
 import { LocationContext } from './LocationContext';
 
 const Location = () => {
-  const fetchUserLocalization = React.useContext(LocationContext)
+  const fetchUserLocalization = React.useContext(LocationContext);
 
   return (
     <div className="app flex justify-center">
@@ -11,12 +11,16 @@ const Location = () => {
           <div>
             <div className="location-box">
               <div className="location">
-                {fetchUserLocalization.city} {fetchUserLocalization.country}
+                {fetchUserLocalization.city}, {fetchUserLocalization.country}
               </div>
             </div>
             <div className="weather-box">
-              <div className="temp">{Math.floor(fetchUserLocalization.weather.current.temp)}ºC</div>
-              <div className="weather">{fetchUserLocalization.weather.current.weather[0].main}</div>
+              <div className="temp">
+                {Math.floor(fetchUserLocalization.weather.current.temp)}ºC
+              </div>
+              <div className="weather">
+                {fetchUserLocalization.weather.current.weather[0].main}
+              </div>
             </div>
 
             <div className="10days">

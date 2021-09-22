@@ -2,8 +2,7 @@ import React from 'react';
 import { SearchContext } from './SearchContext';
 
 const Search = () => {
-
-  const fetchSearch = React.useContext(SearchContext)
+  const fetchSearch = React.useContext(SearchContext);
 
   return (
     <div className="app flex justify-center">
@@ -28,8 +27,12 @@ const Search = () => {
                 <div className="location">{fetchSearch.city}</div>
               </div>
               <div className="weather-box">
-                <div className="temp">{Math.floor(fetchSearch.weather.current.temp)}ºC</div>
-                <div className="weather">{fetchSearch.weather.current.weather[0].main}</div>
+                <div className="temp">
+                  {Math.floor(fetchSearch.weather.current.temp)}ºC
+                </div>
+                <div className="weather">
+                  {fetchSearch.weather.current.weather[0].main}
+                </div>
               </div>
 
               <div className="10days">
